@@ -34,10 +34,8 @@ add_custom_command(
         -cxx-interoperability-mode=default
         -Xcc -fno-exceptions
         -Xcc -std=c++17
-        -Xcc -stdlib=libstdc++
         $$\( echo '$<TARGET_PROPERTY:${PROJECT_NAME},INCLUDE_DIRECTORIES>' | tr '\;' '\\n' | sed -e 's/\\\(.*\\\)/-Xcc -I\\1/g' \)
         $$\( echo '${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES}'              | tr ' '  '\\n' | sed -e 's/\\\(.*\\\)/-Xcc -I\\1/g' \)
-        -I "../libraries/include"
         ${CMAKE_CURRENT_LIST_DIR}/Main.swift
         -c -o ${CMAKE_CURRENT_BINARY_DIR}/_swiftcode.o
     DEPENDS
